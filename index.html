@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,12 +14,20 @@
     }
     header.logo-header {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       background: #000;
     }
     header.logo-header img.logo {
-      max-width: 180px;
+      max-width: 220px;
       height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255,0,0,0.8);
+      animation: pulse 2s infinite;
+    }
+     @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(255,0,0,0.6); }
+      50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255,0,0,1); }
+      100% { transform: scale(1); box-shadow: 0 0 20px rgba(255,0,0,0.6); }
     }
     h2.section-title {
       padding: 10px 20px;
@@ -45,11 +51,17 @@
       box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
       transition: transform 0.2s;
     }
-    .item:hover {
+    .item img {
+      max-width: 100%;
+      border-radius: 10px;
+      height: 150px;
+      object-fit: cover;
+    }
+      .item:hover {
       transform: scale(1.03);
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     }
-    .item img {
+      .item img {
       max-width: 100%;
       border-radius: 10px;
       height: 150px;
@@ -109,23 +121,12 @@
       padding: 20px;
       transition: right 0.3s ease;
       z-index: 999;
-      display: flex;
-      flex-direction: column;
     }
     .cart-panel.open {
       right: 0;
     }
-    .cart-header {
-      background: #e60000;
-      padding: 12px;
-      text-align: center;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-    .cart-header h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #fff;
+    .cart-panel h2 {
+      margin-top: 0;
     }
     .cart-actions button {
       background: #e60000;
@@ -146,112 +147,229 @@
 
   <!-- LOGOTIPO -->
   <header class="logo-header">
-    <img src="logo/logomiray1.jpg" alt="Miray Sushi - Logotipo" class="logo" loading="lazy">
+    <img src="logo/logomiray.jpg" alt="Miray Sushi" class="logo">
   </header>
 
   <!-- TEMAKIS -->
-  <section>
-    <h2 class="section-title">Temakis</h2>
-    <div class="menu">
-      <div class="item">
-        <img src="logo/Temakis/temaki salmao2.png" alt="Temaki Salmão" loading="lazy">
-        <h3>Temaki Salmão</h3>
-        <select class="size-select">
-          <option value="30">P - R$ 30,00</option>
-          <option value="40">M - R$ 40,00</option>
-          <option value="50">G - R$ 50,00</option>
-        </select>
-        <div class="quantity-control">
-          <button aria-label="Diminuir" onclick="changeQty(this, -1)">-</button>
-          <span class="qty">0</span>
-          <button aria-label="Aumentar" onclick="changeQty(this, 1)">+</button>
-        </div>
+  <h2 class="section-title">Temakis</h2>
+  <section class="menu">
+    <div class="item">
+      <img src="logo/temaki-salmao.jpg" alt="temaki salmao" class="logo">
+      </header>
+      <h3>Temaki Salmão</h3>
+      <label>Tamanho:</label>
+      <select class="size-select">
+        <option value="30">P - R$ 30,00</option>
+        <option value="40">M - R$ 40,00</option>
+        <option value="50">G - R$ 50,00</option>
+      </select>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
       </div>
-      <div class="item">
-        <img src="logo/Temakis/temaki camarão2.png" alt="Temaki Camarão" loading="lazy">
-        <h3>Temaki Camarão</h3>
-        <select class="size-select">
-          <option value="30">P - R$ 30,00</option>
-          <option value="40">M - R$ 40,00</option>
-          <option value="50">G - R$ 50,00</option>
-        </select>
-        <div class="quantity-control">
-          <button aria-label="Diminuir" onclick="changeQty(this, -1)">-</button>
-          <span class="qty">0</span>
-          <button aria-label="Aumentar" onclick="changeQty(this, 1)">+</button>
-        </div>
+    </div>
+  
+    <div class="item">
+      <img src="logo/temaki-camarao.jpg" alt="temaki camarao" class="logo">
+      </header>
+      <h3>Temaki Camarão</h3>
+      <label>Tamanho:</label>
+      <select class="size-select">
+        <option value="30">P - R$ 30,00</option>
+        <option value="40">M - R$ 40,00</option>
+        <option value="50">G - R$ 50,00</option>
+      </select>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="logo/temaki-misto.jpg" alt="temaki misto" class="logo">
+    </header>
+      <h3>Temaki Misto</h3>
+      <label>Tamanho:</label>
+      <select class="size-select">
+        <option value="26">P - R$ 26,00</option>
+        <option value="35">M - R$ 35,00</option>
+        <option value="40">G - R$ 40,00</option>
+      </select>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINI TEMAKI FRITO -->
+  <h2 class="section-title">Mini Temaki Frito</h2>
+  <section class="menu">
+    <div class="item">
+      <img src="logo/mine-temaki-frito.png" alt="mini temaki frito" class="logo">
+    </header>
+      <h3>Mini Temaki Frito</h3>
+      <p>R$ 10,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
       </div>
     </div>
   </section>
 
   <!-- SUSHIS -->
-  <section>
-    <h2 class="section-title">Sushis</h2>
-    <div class="menu">
-      <div class="item">
-        <img src="logo/Sushis/sushi salmao.png" alt="Sushi Salmão" loading="lazy">
-        <h3>Sushi Salmão</h3>
-        <p>R$ 10,00</p>
-        <div class="quantity-control">
-          <button aria-label="Diminuir" onclick="changeQty(this, -1)">-</button>
-          <span class="qty">0</span>
-          <button aria-label="Aumentar" onclick="changeQty(this, 1)">+</button>
-        </div>
+  <h2 class="section-title">Sushis</h2>
+  <section class="menu">
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1625944116062-b10cfd540139" alt="Hossomaki de Salmão">
+      <h3>Hossomaki de Salmão</h3>
+      <p>R$ 1,50 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1593032465149-47d2d64dfe8e" alt="Huramaki de Camarão">
+      <h3>Huramaki de Camarão</h3>
+      <p>R$ 1,50 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
       </div>
     </div>
   </section>
 
   <!-- HOT HOLL -->
-  <section>
-    <h2 class="section-title">Hot Holl</h2>
-    <div class="menu">
-      <div class="item">
-        <img src="logo/HotHoll/hotholl.png" alt="Hot Holl" loading="lazy">
-        <h3>Hot Holl</h3>
-        <p>R$ 18,00</p>
-        <div class="quantity-control">
-          <button aria-label="Diminuir" onclick="changeQty(this, -1)">-</button>
-          <span class="qty">0</span>
-          <button aria-label="Aumentar" onclick="changeQty(this, 1)">+</button>
-        </div>
+  <h2 class="section-title">Hot Holl</h2>
+  <section class="menu">
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1604908812320-36f52c4b6ad0" alt="Hot Salmão">
+      <h3>Hot Salmão</h3>
+      <p>R$ 1,50 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUSHI HOT -->
+  <h2 class="section-title">Sushi Hot</h2>
+  <section class="menu">
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1604908177996-0e3b82466e0f" alt="Hot Dog de Sushi Salmão">
+      <h3>Hot Dog de Sushi Salmão</h3>
+      <p>R$ 30,00</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
       </div>
     </div>
   </section>
 
   <!-- ESPECIAIS -->
-  <section>
-    <h2 class="section-title">Especiais</h2>
-    <div class="menu">
-      <div class="item">
-        <img src="logo/Especiais/combinado.png" alt="Combinado Especial" loading="lazy">
-        <h3>Combinado Especial</h3>
-        <p>R$ 80,00</p>
-        <div class="quantity-control">
-          <button aria-label="Diminuir" onclick="changeQty(this, -1)">-</button>
-          <span class="qty">0</span>
-          <button aria-label="Aumentar" onclick="changeQty(this, 1)">+</button>
-        </div>
+  <h2 class="section-title">Especiais</h2>
+  <section class="menu">
+    <div class="item">
+      <img src="logo/sashimi-de-salmao.jpg" alt="Sashimi de Salmão">
+      <h3>Niguiri Iskin</h3>
+      <p>R$ 3,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
       </div>
     </div>
   </section>
 
-  <!-- REFRIGERANTES -->
-  <section>
-    <h2 class="section-title">Refrigerantes</h2>
-    <div class="menu">
-      <div class="item">
-        <img src="logo/Bebidas/coca.png" alt="Coca-Cola Lata" loading="lazy">
-        <h3>Coca-Cola Lata</h3>
-        <p>R$ 6,00</p>
-        <div class="quantity-control">
-          <button aria-label="Diminuir" onclick="changeQty(this, -1)">-</button>
-          <span class="qty">0</span>
-          <button aria-label="Aumentar" onclick="changeQty(this, 1)">+</button>
-        </div>
+  <section class="menu">
+    <div class="item">
+      <img src="logo/sashimi-de-salmao.jpg" alt="Sashimi de Salmão">
+      <h3>Sashimi de Salmão</h3>
+      <p>R$ 5,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
       </div>
     </div>
   </section>
 
+       <section class="menu">
+    <div class="item">
+      <img src="logo/sashimi-de-salmao.jpg" alt="Sashimi de Salmão">
+      <h3>Niguiri Salmão</h3>
+      <p>R$ 5,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+  </section>
+
+       <section class="menu">
+    <div class="item">
+      <img src="logo/sashimi-de-salmao.jpg" alt="Sashimi de Salmão">
+      <h3>Gucan de Salmão</h3>
+      <p>R$ 5,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+  </section>
+
+    <section class="menu">
+    <div class="item">
+      <img src="logo/sashimi-de-salmao.jpg" alt="Sashimi de Salmão">
+      <h3>Manhattan</h3>
+      <p>R$ 5,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+  </section>
+
+   <section class="menu">
+    <div class="item">
+      <img src="logo/sashimi-de-salmao.jpg" alt="Sashimi de Salmão">
+      <h3>Gucan com Couve</h3>
+      <p>R$ 5,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+  </section>
+
+    <section class="menu">
+    <div class="item">
+      <img src="logo/sashimi-de-salmao.jpg" alt="Sashimi de Salmão">
+      <h3>Gucan com Cranchese</h3>
+      <p>R$ 5,00 / unidade</p>
+      <div class="quantity-control">
+        <button onclick="changeQty(this, -1)">-</button>
+        <span class="qty">0</span>
+        <button onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+  </section>
+  
   <!-- ÍCONE DO CARRINHO -->
   <div class="cart-icon" onclick="toggleCart()">
     🛒
@@ -259,10 +377,8 @@
   </div>
 
   <!-- PAINEL DO CARRINHO -->
-  <div class="cart-panel" id="cartPanel" role="dialog" aria-label="Carrinho de compras">
-    <header class="cart-header">
-      <h2>🛒 Carrinho de Compras</h2>
-    </header>
+  <div class="cart-panel" id="cartPanel">
+    <h2>Seu Pedido</h2>
     <ul id="cartItems"></ul>
     <p><strong>Total:</strong> R$ <span id="cartTotal">0,00</span></p>
     <div class="cart-actions">
@@ -275,8 +391,8 @@
     let cart = [];
 
     function changeQty(btn, delta) {
-      let parent = btn.closest(".item");
-      let qtySpan = parent.querySelector('.qty');
+      let parent = btn.parentElement.parentElement;
+      let qtySpan = btn.parentElement.querySelector('.qty');
       let qty = parseInt(qtySpan.textContent);
 
       let name = parent.querySelector('h3').textContent;
@@ -313,16 +429,14 @@
       let list = document.getElementById('cartItems');
       list.innerHTML = '';
       let total = 0;
-      let totalItems = 0;
-      cart.forEach(item => {
+      cart.forEach((item, i) => {
         total += item.price * item.qty;
-        totalItems += item.qty;
         let li = document.createElement('li');
         li.textContent = `${item.qty}x ${item.name} - R$ ${(item.price*item.qty).toFixed(2)}`;
         list.appendChild(li);
       });
       document.getElementById('cartTotal').textContent = total.toFixed(2);
-      document.querySelector('.cart-count').textContent = totalItems;
+      document.querySelector('.cart-count').textContent = cart.length;
     }
 
     function toggleCart() {
