@@ -11,11 +11,18 @@
       padding: 0;
       background-color: #000;
       color: #fff;
+      padding-top: 120px; /* espaço para a logo fixa */
     }
     header.logo-header {
+      position: fixed; /* logo fixa */
+      top: 0;
+      left: 0;
+      width: 100%;
       text-align: center;
-      padding: 25px;
+      padding: 20px;
       background: #000;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
     header.logo-header img.logo {
       max-width: 220px;
@@ -28,7 +35,7 @@
       0% { transform: scale(1); box-shadow: 0 0 20px rgba(255,0,0,0.6); }
       50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255,0,0,1); }
       100% { transform: scale(1); box-shadow: 0 0 20px rgba(255,0,0,0.6); }
-      }
+    }
     h2.section-title {
       padding: 10px 20px;
       margin: 0;
@@ -43,7 +50,7 @@
       padding: 20px;
     }
     .item {
-     background: #111;
+      background: #111;
       padding: 15px;
       border-radius: 10px;
       text-align: center;
@@ -51,7 +58,7 @@
       box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
       transition: transform 0.2s;
     }
-      .item:hover {
+    .item:hover {
       transform: scale(1.03);
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     }
@@ -79,7 +86,7 @@
     }
     .cart-icon {
       position: fixed;
-      top: 20px;
+      top: 100px; /* abaixo da logo fixa */
       right: 20px;
       background: #e60000;
       color: white;
@@ -132,6 +139,16 @@
       width: 100%;
       cursor: pointer;
     }
+    #customerNameInput {
+      display: block;
+      margin: 10px auto;
+      padding: 5px 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      width: 80%;
+      text-align: center;
+    }
     @media (max-width: 600px) {
       .menu { grid-template-columns: 1fr; }
     }
@@ -139,9 +156,11 @@
 </head>
 <body>
 
-  <!-- LOGOTIPO -->
+  <!-- LOGOTIPO FIXA -->
   <header class="logo-header">
     <img src="logo/logomiray1.jpg" alt="Miray Sushi" class="logo">
+    <!-- Campo para nome do cliente -->
+    <input type="text" id="customerNameInput" placeholder="Digite seu nome">
   </header>
 
   <!-- TEMAKIS -->
@@ -573,7 +592,7 @@
       let list = document.getElementById('cartItems');
       list.innerHTML = '';
       let total = 0;
-      cart.forEach((item, i) => {
+      cart.forEach(item => {
         total += item.price * item.qty;
         let li = document.createElement('li');
         li.textContent = `${item.qty}x ${item.name} - R$ ${(item.price*item.qty).toFixed(2)}`;
@@ -588,7 +607,10 @@
     }
 
     function generateReport() {
+      let customerName = document.getElementById('customerNameInput').value.trim();
       let report = "Pedido Miray Sushi:\n";
+      if(customerName) report += `Cliente: ${customerName}\n`;
+
       cart.forEach(item => {
         report += `${item.qty}x ${item.name} - R$ ${(item.price*item.qty).toFixed(2)}\n`;
       });
