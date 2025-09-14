@@ -570,18 +570,25 @@
     }
 
     function updateCart() {
-      let list = document.getElementById('cartItems');
-      list.innerHTML = '';
-      let total = 0;
-      cart.forEach((item, i) => {
-        total += item.price * item.qty;
-        let li = document.createElement('li');
-        li.textContent = `${item.qty}x ${item.name} - R$ ${(item.price*item.qty).toFixed(2)}`;
-        list.appendChild(li);
-      });
-      document.getElementById('cartTotal').textContent = total.toFixed(2);
-      document.querySelector('.cart-count').textContent = cart.length;
-    }
+  let list = document.getElementById('cartItems');
+  list.innerHTML = '';
+  let total = 0;
+  let totalQty = 0;
+
+  cart.forEach((item, i) => {
+    total += item.price * item.qty;
+    totalQty += item.qty;
+
+    let li = document.createElement('li');
+    li.textContent = `${item.qty}x ${item.name} - R$ ${(item.price*item.qty).toFixed(2)}`;
+    list.appendChild(li);
+  });
+
+  document.getElementById('cartTotal').textContent = total.toFixed(2);
+
+  // ✅ Corrige para mostrar a quantidade real
+  document.querySelector('.cart-count').textContent = totalQty;
+}
 
     function toggleCart() {
       document.getElementById('cartPanel').classList.toggle('open');
