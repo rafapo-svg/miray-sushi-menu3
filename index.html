@@ -618,6 +618,13 @@
   });
 }
 
+    function goToCart() {
+  document.getElementById("cartCard").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+    
     function generateReport() {
       let report = "Pedido Miray Sushi:\n";
       cart.forEach(item => {
