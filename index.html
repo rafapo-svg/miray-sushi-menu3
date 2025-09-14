@@ -77,61 +77,81 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    .cart-icon {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #e60000;
-      color: white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-    .cart-count {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: yellow;
-      color: black;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 50%;
-    }
-    .cart-panel {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      max-width: 400px;
-      height: 100%;
-      background: #111;
-      color: white;
-      padding: 20px;
-      transition: right 0.3s ease;
-      z-index: 999;
-    }
-    .cart-panel.open {
-      right: 0;
-    }
-    .cart-panel h2 {
-      margin-top: 0;
-    }
-    .cart-actions button {
-      background: #e60000;
-      color: white;
-      border: none;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 6px;
-      width: 100%;
-      cursor: pointer;
-    }
+ /* 🎨 Estilo do carrinho em card */
+.cart-card {
+  background: #111;
+  border: 2px solid rgba(255, 0, 0, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.cart-card h2 {
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.cart-card p {
+  color: #ddd;
+}
+
+.cart-card .cart-subtitle {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #bbb;
+  font-style: italic;
+}
+
+.cart-card .cart-actions button {
+  width: 100%;
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cart-card .cart-actions button:hover {
+  background: #cc0000;
+}
+    /* 🔘 Botão Finalizar Pedido fixo */
+#finalizarBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: red;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 1100;
+  font-size: 16px;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s;
+}
+
+#finalizarBtn:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+/* ✨ Animação de pulsar */
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px rgba(255,0,0,0.6); }
+  50% { box-shadow: 0 0 25px rgba(255,0,0,1); }
+  100% { box-shadow: 0 0 10px rgba(255,0,0,0.6); }
+}
     @media (max-width: 600px) {
       .menu { grid-template-columns: 1fr; }
     }
@@ -514,23 +534,24 @@
     </div>
   </section>
     
-  <!-- ÍCONE DO CARRINHO -->
-  <div class="cart-icon" onclick="toggleCart()">
-    🛒
-    <span class="cart-count">0</span>
-  </div>
+ <!-- 🛒 Carrinho -->
+<div id="cartCard" class="cart-card">
+  <h2>🛒 Seu Pedido</h2>
+  <ul id="cartItems"></ul>
+  <p><strong>Total:</strong> R$ <span id="cartTotal">0,00</span></p>
 
- <!-- PAINEL DO CARRINHO -->
-  <div class="cart-panel" id="cartPanel">
-    <h2>Seu Pedido</h2>
-    <ul id="cartItems"></ul>
-    <p><strong>Total:</strong> R$ <span id="cartTotal">0,00</span></p>
-    <div class="cart-actions">
-      <button onclick="shareWhatsApp()">Encaminhar Pedido no WhatsApp</button>
-      <button onclick="copyReport()">Copiar Pedido</button>
-    </div>
-  </div>
+  <p class="cart-subtitle">
+    Seu pedido está sendo organizado aqui. Revise antes de enviar pelo WhatsApp.
+  </p>
 
+  <div class="cart-actions">
+    <button onclick="shareWhatsApp()">Compartilhar WhatsApp</button>
+    <button onclick="copyReport()">Copiar Pedido</button>
+  </div>
+</div>
+  <!-- 🔘 Botão Finalizar Pedido -->
+<button id="finalizarBtn" onclick="goToCart()">Finalizar Pedido</button>
+  
   <script>
     let cart = [];
 
@@ -590,9 +611,12 @@
   document.querySelector('.cart-count').textContent = totalQty;
 }
 
-    function toggleCart() {
-      document.getElementById('cartPanel').classList.toggle('open');
-    }
+     function toggleCart() {
+  document.getElementById("cartCard").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
 
     function generateReport() {
       let report = "Pedido Miray Sushi:\n";
